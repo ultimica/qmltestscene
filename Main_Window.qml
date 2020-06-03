@@ -31,19 +31,6 @@ Rectangle {
             anchors.bottomMargin: borderwidth
         }
 
-        Rectangle {
-            id: rightpane
-            color: "#7F7F7F"
-            anchors.leftMargin: 0
-            anchors.left: column.right
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.rightMargin: borderwidth
-            anchors.topMargin: borderwidth
-            anchors.bottomMargin: borderwidth
-        }
-
         Column {
             id: column
             anchors.fill: leftpane
@@ -72,17 +59,45 @@ Rectangle {
             LeftTabButton{
                 id:hmi
                 displstr:qsTr("HMI")
+                property string qml_source : "HMI_section.qml"
             }            
             LeftTabButton{
                 id:plc
                 displstr:qsTr("PLC")
+                property string qml_source : "Location_section.qml"
             }         
             LeftTabButton{
                 id:loc
                 displstr:qsTr("LOC")
+                property string qml_source : "PLC_section.qml"
             }         
         }
+
+            
+        Rectangle {
+            id: rightpane
+            color: "#7F7F7F"
+            anchors.leftMargin: -2
+            anchors.left: column.right
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            anchors.rightMargin: borderwidth
+            anchors.topMargin: borderwidth
+            anchors.bottomMargin: borderwidth
+
+
+            Loader{
+                id:lod
+                anchors.fill : parent
+                focus:true
+            }
+
+        }
     }
+
+
+
 
     Component.onCompleted:{
         hmi.clicking_tab.connect(root.on_clicking_tab);
@@ -95,6 +110,7 @@ Rectangle {
         plc.isActive=false;
         loc.isActive=false;
         sender.isActive=true;
-
+        console.log(sender.qml_source)
+        lod.source=sender.qml_source;
     }
 }

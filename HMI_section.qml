@@ -10,9 +10,24 @@ Item{
     property alias tableModel : tableView.model
     property bool isVScrollVisible : tableView.__verticalScrollBar.visible
 
+    Rectangle{
+        id: leftpane
+        anchors.left:parent.left
+        anchors.top:parent.top
+        anchors.bottom:parent.bottom
+        width:parent.width*2/3
+    }
+    Rectangle{
+        id: rightpane
+        anchors.left:leftpane.right
+        anchors.top:parent.top
+        anchors.bottom:parent.bottom        
+        anchors.right:parent.right
+    }
+
     TableView {
         id: tableView
-        anchors.fill : parent
+        anchors.fill : leftpane
        
      //   verticalScrollBarPolicy:Qt.ScrollBarAlwaysOn
 

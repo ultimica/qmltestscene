@@ -15,7 +15,7 @@ Item{
         property bool isActiveColor:  ( root.isActive || rectplc.ishovering)
         anchors.fill: parent
         border.color: "#f47a3d"
-        color: isActiveColor ? "#83786a" : "#00000000"
+        color: isActiveColor ? "#7F7F7F" : "#00000000"
         Text {
             color:  "#ffe5e5" 
             anchors.margins: 2

@@ -6,8 +6,8 @@ Item{
     anchors.fill : parent
     Rectangle{
         anchors.fill : parent
-        anchors.rightMargin :100
-        color:"green"
+        anchors.leftMargin :100
+        color:"red"
     }
    
 }
