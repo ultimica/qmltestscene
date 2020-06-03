@@ -2,18 +2,20 @@ import QtQuick 2.10
 import QtQuick.Controls 2.3
 import QtQuick.Window 2.10
 
+
 Rectangle {
+    id:root
     width: 1024
     height: 768
 
-    property int borderwidth: 10
+    property int borderwidth: 5
 
     property var activetab 
 
     Rectangle {
         id: rectb
         color: "#00000000"
-        border.color: "#47342a"
+        border.color: "#000000"
         border.width: borderwidth
         anchors.fill: parent
 
@@ -23,7 +25,7 @@ Rectangle {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: 216
-            color:  "#0a0808"
+            color:  "#212121"
             anchors.leftMargin: borderwidth
             anchors.topMargin: borderwidth
             anchors.bottomMargin: borderwidth
@@ -31,7 +33,7 @@ Rectangle {
 
         Rectangle {
             id: rightpane
-            color: "#83786a"
+            color: "#7F7F7F"
             anchors.leftMargin: 0
             anchors.left: column.right
             anchors.top: parent.top
@@ -52,94 +54,47 @@ Rectangle {
                 id: rectangle1
                 width: column.width
                 height: 120
-                color: "#00000000"
+                color: "#000000"
                 Text {
-                    color:  "#ffe5e5"
+                    color:  "#FF8F07"
                     anchors.margins: 2
+                    anchors.topMargin:30
+                    anchors.leftMargin:5
                     text: qsTr("FvDesigner")
-                    anchors.left: parent.left
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 9
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalBottom
-                    font.family: "Courier"
-
-                    font.pixelSize: 80
-                }
-            }
-
-            Rectangle {
-                id: recthmi
-                width: column.width
-                height: 80
-                border.color: "#f47a3d"
-                color: (activetab == recthmi ) ? "#83786a" : "#00000000"
-                Text {
-                    color:  "#ffe5e5" 
-                    anchors.margins: 2
-                    text: qsTr("HMI")
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.family: "Courier"
-
-                    font.pixelSize: 80
-                }
-                MouseArea{
-                    anchors.fill : parent
-                    onClicked:{
-                        activetab=parent
-                    }
-                }
-            }
-
-            Rectangle {
-                id: rectplc
-                width: column.width
-                height: 80
-                border.color: "#f47a3d"
-                color: (activetab == rectplc ) ? "#83786a" : "#00000000"
-                Text {
-                    color:  "#ffe5e5" 
                     anchors.fill: parent
-                    anchors.margins: 2
-                    text: qsTr("PLC")
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.family: "Courier"
+                    font.family: "Helvetica"
+                    font.weight: Font.ExtraBold
+                    font.pixelSize: 35
 
-                    font.pixelSize: 80
-                }
-                MouseArea{
-                    anchors.fill : parent
-                    onClicked:{
-                        activetab=parent
-                    }
                 }
             }
-            Rectangle {
-                id :rectloc
-                width: column.width
-                height: 80
-                border.color: "#f47a3d"
-                color: (activetab == rectloc ) ? "#83786a" : "#00000000"
-                Text {
-                    color:  "#ffe5e5" 
-                    anchors.fill: parent
-                    anchors.margins: 2
-                    text: qsTr("Location")
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.family: "Courier"
-                    font.pixelSize: 80
-                }
 
-                MouseArea{
-                    anchors.fill : parent
-                    onClicked:{
-                        activetab=parent
-                    }
-                }
-            }
+            LeftTabButton{
+                id:hmi
+                displstr:qsTr("HMI")
+            }            
+            LeftTabButton{
+                id:plc
+                displstr:qsTr("PLC")
+            }         
+            LeftTabButton{
+                id:loc
+                displstr:qsTr("LOC")
+            }         
         }
+    }
+
+    Component.onCompleted:{
+        hmi.clicking_tab.connect(root.on_clicking_tab);
+        plc.clicking_tab.connect(root.on_clicking_tab);
+        loc.clicking_tab.connect(root.on_clicking_tab);
+    }
+    function on_clicking_tab(sender)
+    {
+        hmi.isActive=false;
+        plc.isActive=false;
+        loc.isActive=false;
+        sender.isActive=true;
+
     }
 }
