@@ -28,7 +28,7 @@ Item{
     TableView {
         id: tableView
         anchors.fill : leftpane
-       
+        model:dymmymodel
      //   verticalScrollBarPolicy:Qt.ScrollBarAlwaysOn
 
         property int rightmargin : isVScrollVisible ? 20 : 0 
@@ -37,28 +37,45 @@ Item{
         property int column3 : tableView.width-column1-column2-rightmargin
      
         TableViewColumn {
-            role: "io"
-            title: "I/O"
+            role: "model_name"
+            title: "Model"
             width:tableView.column1
             movable: false
             resizable: false
         }
 
         TableViewColumn {
-            role: "enable"
-            title: "Enable"
+            role: "screen_size"
+            title: "Screen Size"
             width: tableView.column2
             movable: false
             resizable: false
         }
         TableViewColumn {
-            role: "value"
-            title: "Data"
+            role: "resolution"
+            title: "Resolution"
             width: tableView.column3
             movable: false
             resizable: false
         }
 
    }
- 
+    ListModel{
+        id:dymmymodel
+        ListElement {
+        model_name: "P5_1"
+        screen_size: "7"
+        resolution: "800x600"
+        }
+        ListElement {
+        model_name: "P5_2"
+        screen_size: "7.5"
+        resolution: "800x600"
+        }
+        ListElement {
+         model_name: "P5_144"
+        screen_size: "15"
+        resolution: "1024x768"
+        }
+    }
 }
