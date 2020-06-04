@@ -3,8 +3,10 @@ import QtQuick.Controls 2.3
 import QtQuick.Window 2.10
 
 
-Rectangle {
+Window {
     id:root
+    visible: true
+    title: qsTr("FvDesigner")
     width: 1024
     height: 768
 

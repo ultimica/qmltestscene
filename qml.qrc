@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>HMI_section.qml</file>
+        <file>LeftTabButton.qml</file>
+        <file>Location_section.qml</file>
+        <file>Main_Window.qml</file>
+        <file>PLC_section.qml</file>
+        <file>TableHeader.qml</file>
+        <file>hmi-icon-6.jpg</file>
+    </qresource>
+</RCC>
