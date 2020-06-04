@@ -90,6 +90,7 @@ Rectangle {
             Loader{
                 id:lod
                 anchors.fill : parent
+                anchors.margins : 5
                 focus:true
             }
 

@@ -12,6 +12,7 @@ Item{
 
     Rectangle{
         id: leftpane
+        color:"#515151"
         anchors.left:parent.left
         anchors.top:parent.top
         anchors.bottom:parent.bottom
@@ -19,63 +20,208 @@ Item{
     }
     Rectangle{
         id: rightpane
+        color:"#515151"
         anchors.left:leftpane.right
         anchors.top:parent.top
         anchors.bottom:parent.bottom        
         anchors.right:parent.right
     }
 
-    TableView {
-        id: tableView
+    Column{
+        id:lefcol
         anchors.fill : leftpane
-        model:dymmymodel
-     //   verticalScrollBarPolicy:Qt.ScrollBarAlwaysOn
-
-        property int rightmargin : isVScrollVisible ? 20 : 0 
-        property int column1 : tableView.width*3/8
-        property int column2 : tableView.width*2/8
-        property int column3 : tableView.width-column1-column2-rightmargin
-     
-        TableViewColumn {
-            role: "model_name"
-            title: "Model"
-            width:tableView.column1
-            movable: false
-            resizable: false
+        Rectangle{
+            height:35
+            anchors.left: parent.left
+            anchors.right: parent.right
+            color:"#212121"
+            border.color:"#000000"
+            border.width:3
+            Row{
+                anchors.fill :parent
+                anchors.margins:5
+                Text{
+                anchors.top:parent.top
+                anchors.bottom:parent.bottom
+                width:200
+                text:"Module Select"
+                font.family: "Helvetica"
+                font.pixelSize: 20
+                color:"#FF966D"
+                }
+            }
+            
         }
-
-        TableViewColumn {
-            role: "screen_size"
-            title: "Screen Size"
-            width: tableView.column2
-            movable: false
-            resizable: false
+        Rectangle{
+            id:optionrect
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: 90
+            color:"#00000000"
+            border.color :"#000000"
+            border.width:2
+            Rectangle{
+                id:searchbar
+                anchors.left: parent.left
+                anchors.leftMargin:2
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin:2
+                height:30
+                width:150
+                color:"#FFFFFF"
+                border.color:"#878787"
+                border.width:2
+            }
+            Rectangle{
+                id: filtersection
+                anchors.left:searchbar.right
+                anchors.leftMargin:5
+                anchors.top:parent.top
+                anchors.right:parent.right
+                anchors.bottom:parent.bottom
+                color :"#00000000"
+                Grid {
+                    anchors.fill: parent
+                    anchors.margins:5
+                    columns: 3
+                    spacing: 2
+                    Rectangle { color: "#6A9496"; width: 100; height: 40 }
+                    Rectangle { color: "#6A9496";width: 100; height: 40 }
+                    Rectangle { color: "#6A9496"; width: 100; height: 40  }
+                    Rectangle { color: "#6A9496"; width: 100; height: 40 }
+                    Rectangle { color: "#6A9496";width: 100; height: 40  }
+                    Rectangle { color: "#6A9496";width: 100; height: 40  }
+                }
+                
+            }
         }
-        TableViewColumn {
-            role: "resolution"
-            title: "Resolution"
-            width: tableView.column3
-            movable: false
-            resizable: false
-        }
+        
+        Rectangle{
+            height:parent.height-180
+            anchors.left: parent.left
+            anchors.right: parent.right
+            color:"#212121"
+            border.color:"#000000"
+            border.width:3
 
-   }
+            TableView {
+                id: tableView
+                anchors.fill : parent
+                anchors.margins : parent.border.width
+                anchors.topMargin : 3
+                model:dymmymodel
+                headerDelegate:TableHeader{
+                    height:20
+                    isShow:(styleData.column==0 || styleData.column==1 || styleData.column==2)
+                }
+                rowDelegate: Item{
+                    height:25//  (styleData.row %2 ==0) ?60 :100
+                    Rectangle{
+                        anchors.fill:parent
+                        color : (styleData.row%2==0)?"#EDF9FF":"#FFFFFF";
+                    }          
+                } 
+                property int rightmargin : isVScrollVisible ? 20 : 0 
+                property int column1 : tableView.width*3/8
+                property int column2 : tableView.width*2/8
+                property int column3 : tableView.width-column1-column2-rightmargin
+            
+                TableViewColumn {
+                    role: "model_name"
+                    title: "Model"
+                    width:tableView.column1
+                    movable: false
+                    resizable: false
+                }
+
+                TableViewColumn {
+                    role: "screen_size"
+                    title: "Screen Size"
+                    width: tableView.column2
+                    movable: false
+                    resizable: false
+                }
+                TableViewColumn {
+                    role: "resolution"
+                    title: "Resolution"
+                    width: tableView.column3
+                    movable: false
+                    resizable: false
+                }
+
+            }
+        }
+        
+    }
+//////////////////////////////////////////////  Right Part
+//////////////////////////////////////////////
+    Rectangle{
+        anchors.fill: rightpane
+        anchors.bottomMargin:55
+        color:"#00000000"
+        border.color:"#000000"
+        border.width:3
+        
+        Column{
+            anchors.fill:parent
+            Rectangle{
+                width:1
+                height:50
+                color:"#00000000"
+            }
+            Rectangle{
+                id: iconrect
+                anchors.horizontalCenter : parent.horizontalCenter 
+                width:220
+                height:150
+                // border.color:"green"
+                color:"#00000000"
+                Image{
+                    id:himimg
+                    source:"hmi-icon-6.jpg"
+                    anchors.fill:parent
+                }
+            }
+
+            Rectangle{
+                id: desciption
+                anchors.left:parent.left
+                anchors.right:parent.right
+                border.width:2
+                border.color:"#FFFFFF"
+
+            }
+        }
+        
+
+    }
+/////////////////////////////////////////////// Model Data
+///////////////////////////////////////////////    
     ListModel{
         id:dymmymodel
         ListElement {
-        model_name: "P5_1"
-        screen_size: "7"
-        resolution: "800x600"
+            model_name: "P5_1"
+            screen_size: 7
+            resolution: "800x600"
         }
         ListElement {
-        model_name: "P5_2"
-        screen_size: "7.5"
-        resolution: "800x600"
+            model_name: "P5_2"
+            screen_size: 7.5
+            resolution: "800x600"
         }
         ListElement {
-         model_name: "P5_144"
-        screen_size: "15"
-        resolution: "1024x768"
+            model_name: "P5_144"
+            screen_size: 15
+            resolution: "1024x768"
         }
+    }
+    Component.onCompleted:{
+        for(var i=0;i<1000;i++)
+        {
+            var modelname="P5_"+(i+1);
+            var screen=7+i;
+            dymmymodel.append({"model_name": modelname, "screen_size":screen, "resolution":"800x600"})
+        }
+        
     }
 }
