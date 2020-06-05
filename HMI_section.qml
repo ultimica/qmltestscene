@@ -9,7 +9,7 @@ Item{
     property alias tableRowDelegate: tableView.rowDelegate
     property alias tableModel : tableView.model
     property bool isVScrollVisible : tableView.__verticalScrollBar.visible
-
+    focus: true
     Rectangle{
         id: leftpane
         color:"#515151"
@@ -26,6 +26,7 @@ Item{
         anchors.bottom:parent.bottom        
         anchors.right:parent.right
     }
+
 
     Column{
         id:lefcol
@@ -71,6 +72,11 @@ Item{
                 color:"#FFFFFF"
                 border.color:"#878787"
                 border.width:2
+                Text{
+                    anchors.fill :parent
+                    anchors.margins:2
+                    text:"Search Field"
+                }
             }
             Rectangle{
                 id: filtersection
@@ -85,12 +91,10 @@ Item{
                     anchors.margins:5
                     columns: 3
                     spacing: 2
-                    Rectangle { color: "#6A9496"; width: 100; height: 40 }
-                    Rectangle { color: "#6A9496";width: 100; height: 40 }
-                    Rectangle { color: "#6A9496"; width: 100; height: 40  }
-                    Rectangle { color: "#6A9496"; width: 100; height: 40 }
-                    Rectangle { color: "#6A9496";width: 100; height: 40  }
-                    Rectangle { color: "#6A9496";width: 100; height: 40  }
+                    ToggleButton{displstr:"Ethernet"}
+                    ToggleButton{displstr:"Bluetooth"}
+                    ToggleButton{displstr:"COM(4)"}
+                    ToggleButton{displstr:"PLCEmbedded"}
                 }
                 
             }
@@ -194,6 +198,25 @@ Item{
         }
         
 
+    }
+
+    Rectangle{
+        id: bottonToolPane
+        color:"#515151"
+        anchors.left: parent.left
+        anchors.right:parent.right
+        anchors.bottom:parent.bottom
+        height : 55
+
+        Button {
+            text:"Apply"
+            height:30
+            width:80
+            anchors.right:parent.right
+            anchors.rightMargin:10
+            anchors.bottom:parent.bottom
+            anchors.bottomMargin:5
+        }
     }
 /////////////////////////////////////////////// Model Data
 ///////////////////////////////////////////////    

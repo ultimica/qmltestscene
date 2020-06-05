@@ -8,5 +8,7 @@
         <file>PLC_section.qml</file>
         <file>TableHeader.qml</file>
         <file>hmi-icon-6.jpg</file>
+        <file>ToggleButton.qml</file>
+        <file>NormalTextButton.qml</file>
     </qresource>
 </RCC>
