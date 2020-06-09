@@ -10,5 +10,10 @@
         <file>hmi-icon-6.jpg</file>
         <file>ToggleButton.qml</file>
         <file>NormalTextButton.qml</file>
+        <file>CircleBtn.qml</file>
+        <file>File_section.qml</file>
+        <file>FvWizard.qml</file>
+        <file>Pass.qml</file>
+        <file>TextBlock.qml</file>
     </qresource>
 </RCC>
