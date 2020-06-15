@@ -5,9 +5,9 @@ Item{
     id:item
     anchors.fill : parent
     Rectangle{
-        anchors.fill : parent
-        anchors.leftMargin :100
-        color:"red"
+        color:"#515151"
+        anchors.fill:parent
+        
     }
    
 }

@@ -1,12 +1,22 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
+    //"command": "D:/QtEnterprise/5.14.0/mingw73_64/bin/qml.exe  ${file}",
     "version": "2.0.0",
     "tasks": [
         {
             "label": "QML",
             "type": "shell",
-            "command": "D:/QtEnterprise/5.14.0/mingw73_64/bin/qml.exe  ${file}",
+            "command": "D:/QtEnterprise/5.15.0/mingw81_64/bin/qml.exe  Main_Window.qml",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "QML Current",
+            "type": "shell",
+            "command": "D:/QtEnterprise/5.15.0/mingw81_64/bin/qml.exe  ${file}",
             "group": {
                 "kind": "build",
                 "isDefault": true

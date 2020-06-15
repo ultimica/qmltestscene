@@ -101,7 +101,7 @@ Item{
         }
         
         Rectangle{
-            height:parent.height-180
+            height:parent.height
             anchors.left: parent.left
             anchors.right: parent.right
             color:"#212121"
@@ -161,7 +161,7 @@ Item{
 //////////////////////////////////////////////
     Rectangle{
         anchors.fill: rightpane
-        anchors.bottomMargin:55
+        // anchors.bottomMargin:55
         color:"#00000000"
         border.color:"#000000"
         border.width:3
@@ -200,24 +200,24 @@ Item{
 
     }
 
-    Rectangle{
-        id: bottonToolPane
-        color:"#515151"
-        anchors.left: parent.left
-        anchors.right:parent.right
-        anchors.bottom:parent.bottom
-        height : 55
+    // Rectangle{
+    //     id: bottonToolPane
+    //     color:"#515151"
+    //     anchors.left: parent.left
+    //     anchors.right:parent.right
+    //     anchors.bottom:parent.bottom
+    //     height : 55
 
-        Button {
-            text:"Apply"
-            height:30
-            width:80
-            anchors.right:parent.right
-            anchors.rightMargin:10
-            anchors.bottom:parent.bottom
-            anchors.bottomMargin:5
-        }
-    }
+    //     Button {
+    //         text:"Finish"
+    //         height:30
+    //         width:80
+    //         anchors.right:parent.right
+    //         anchors.rightMargin:10
+    //         anchors.bottom:parent.bottom
+    //         anchors.bottomMargin:5
+    //     }
+    // }
 /////////////////////////////////////////////// Model Data
 ///////////////////////////////////////////////    
     ListModel{

@@ -10,9 +10,9 @@ Item {
 
    // signal welcome()
 
-
     CircleBtn{  
         id:c2
+        
         x:200
         y:100
     }

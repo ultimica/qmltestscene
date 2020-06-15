@@ -5,9 +5,19 @@ Item{
     id:item
     anchors.fill : parent
     Rectangle{
-        anchors.fill : parent
-        anchors.rightMargin :100
-        color:"green"
+        color:"#515151"
+        anchors.fill:parent
+
+        Image{
+            id:imgrect
+            anchors.top:parent.top
+            anchors.left:parent.left
+            anchors.topMargin:100
+            anchors.leftMargin:30
+            width:616
+            height:460
+            source: "plcsel.jpg"
+        } 
     }
    
 }

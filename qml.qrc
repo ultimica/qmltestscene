@@ -15,5 +15,7 @@
         <file>FvWizard.qml</file>
         <file>Pass.qml</file>
         <file>TextBlock.qml</file>
+        <file>Back_Arrow.svg.png</file>
+        <file>plcsel.jpg</file>
     </qresource>
 </RCC>

@@ -8,10 +8,18 @@ Item {
     property bool ishovering : false
     signal clicking_btn(var sender)
 
+    property int availablelen:150
+    property int radius : availablelen/5
+    width:availablelen
+    height:availablelen
     Rectangle{
-        width: 20
-        height: 20
-        radius : 10
+        
+        anchors.horizontalCenter: root.horizontalCenter
+        anchors.verticalCenter: root.verticalCenter
+        
+        width:root.radius
+        height:root.radius
+        radius : root.radius/2
 
         color: ishovering ? "red": "green"
         MouseArea{
