@@ -54,7 +54,7 @@ Item {
                 }
 
                 Button{
-                    width:80
+                    width:130
                     height:30
 
                     text:"language"
@@ -173,17 +173,50 @@ Item {
   
         }
 
-            
+        Rectangle{
+            id: close_max_tool
+            anchors.top:parent.top
+            anchors.left:column.right
+            anchors.right:parent.right
+            color: "#000000"
+            height: 30
+
+            Row{
+                anchors.right:parent.right
+                anchors.top:parent.top
+                anchors.bottom:parent.bottom
+                anchors.rightMargin:2
+                anchors.topMargin:2
+                anchors.bottomMargin:2
+                layoutDirection:Qt.RightToLeft 
+                spacing:3
+                Rectangle{
+                    width:parent.height
+                    height:width
+                    color:"red"
+                }
+                Rectangle{
+                    width:parent.height
+                    height:width
+                    color:"green"
+                }
+                Rectangle{
+                    width:parent.height
+                    height:width
+                    color:"yellow"
+                }
+            }
+        }    
         Rectangle {
             id: rightpane
             color: "#7F7F7F"
             anchors.leftMargin: -2
             anchors.left: column.right
-            anchors.top: parent.top
+            anchors.top: close_max_tool.bottom
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             anchors.rightMargin: borderwidth
-            anchors.topMargin: borderwidth
+            //anchors.topMargin: borderwidth
             anchors.bottomMargin: borderwidth
 
 
